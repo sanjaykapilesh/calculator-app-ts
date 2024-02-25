@@ -1,0 +1,97 @@
+@import 'reset';
+@import 'variables';
+@import './mixins/generator';
+
+.flex {
+  display: flex;
+}
+
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+
+  // Container emulation
+  max-width: 50%;
+  margin: auto;
+}
+
+.text-white {
+  color: white;
+}
+
+.bg-gray {
+  background: $primary-bg-color;
+}
+
+.bg-black {
+  background: $black;
+}
+
+.box {
+  width: 90%;
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: map-get($spacing, 4);
+  padding: map-get($spacing, 5);
+
+  font-weight: bold;
+}
+
+.app-number-box {
+  background-color: $primary-bg-color;
+  transition: all 0.2s ease-in;
+
+  &:has(.btn-delete:hover) {
+    background-color: red;
+    transform: scale(1.02);
+    color: white;
+  }
+}
+
+.btn-delete {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+  transition: transform 0.2s ease-in;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.app-form {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.form-input {
+  flex-basis: 60%;
+
+  padding: map-get($spacing, 5);
+  border-radius: 10px;
+
+  border: 1px solid gray;
+
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.form-submit-btn {
+  flex-basis: 25%;
+  border-radius: 10px;
+  border: 1px solid green;
+  background-color: #3c8a3c;
+  color: white;
+
+  font-size: 18px;
+  font-weight: bold;
+}

@@ -1,0 +1,45 @@
+@use 'sass:map';
+@import 'values';
+
+$total-count: 10;
+$utility-properties: (
+  'p': padding,
+  'pt': padding-top,
+  'pb': padding-bottom,
+  'pr': padding-right,
+  'pl': padding-left,
+  'm': margin,
+  'mt': margin-top,
+  'mb': margin-bottom,
+  'ml': margin-left,
+  'mr': margin-right,
+);
+
+// A base generator that generates classes from spacing 1 - 10
+@mixin spacing-class-generator($class-name, $property) {
+  @for $i from 1 through $total-count {
+    .#{$class-name}-#{$i} {
+      #{$property}: map.get($spacing, $i);
+    }
+  }
+}
+
+// A wrapper generator that calls the base generate to generate all the utility classes
+@mixin generate-spacing-utility-classes() {
+  @each $class-name, $property in $utility-properties {
+    @include spacing-class-generator($class-name, $property);
+  }
+}
+
+// Generator mixin for Typography and Other Utilities
+@mixin utility-class-generator($utility-data, $property-name, $property-type) {
+  // Loop through the Utility data
+  @each $class-name, $value in $utility-data {
+    // Create classes dynamically based on property and class name
+    .#{$property-name}-#{$class-name} {
+      #{$property-type}: #{$value};
+    }
+  }
+}
+
+@include generate-spacing-utility-classes;
