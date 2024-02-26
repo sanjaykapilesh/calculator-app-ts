@@ -49,6 +49,7 @@ function App() {
   const renderedNumbersCollection = useMemo(
     () =>
       numbersCollection.map((number, index) => (
+        // Note: The identical key issue can be fixed by generating uuid when the user adds a number, if needed.
         <NumberItem
           key={number}
           number={number}
